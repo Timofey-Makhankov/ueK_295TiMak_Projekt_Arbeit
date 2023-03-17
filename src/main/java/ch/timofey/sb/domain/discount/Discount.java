@@ -17,8 +17,8 @@ public class Discount {
     @Column(name = "discount_id")
     private int id;
 
-    @Column(name = "discount")
-    private double setDiscount = 0;
+    @Column(name = "id_book")
+    private int idBook = 0;
 
     @Column(name = "code")
     private int code = 0;
