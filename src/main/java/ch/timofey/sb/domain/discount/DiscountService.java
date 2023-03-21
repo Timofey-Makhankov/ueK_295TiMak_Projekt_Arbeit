@@ -1,8 +1,6 @@
 package ch.timofey.sb.domain.discount;
 
 import lombok.extern.log4j.Log4j2;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,16 +9,15 @@ import java.util.Optional;
 @Service
 @Log4j2
 public class DiscountService {
-    Logger logger = LogManager.getLogger(DiscountService.class);
     private final DiscountRepository discountRepository;
 
     public DiscountService(DiscountRepository discountRepository) {
         this.discountRepository = discountRepository;
     }
 
-    public List<Discount> getAllDiscounts() {
+    public Optional<List<Discount>> getAllDiscounts() {
         log.info("all discount Items has been tried to be accessed");
-        return discountRepository.findAll();
+        return Optional.of(discountRepository.findAll());
     }
 
     public Optional<Discount> getDiscountById(int index) {
