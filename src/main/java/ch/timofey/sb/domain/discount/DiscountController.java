@@ -33,14 +33,14 @@ public class DiscountController {
 
     @GetMapping("/{discountId}")
     @ResponseStatus(code = HttpStatus.OK)
-    public ResponseEntity<Discount> getDiscount(@PathVariable("discountId") Integer discountId) throws DiscountNotFoundException{
+    public ResponseEntity<Discount> getDiscount(@PathVariable("discountId") Integer discountId) throws DiscountNotFoundException {
         return ResponseEntity.ok().body(discountService.getDiscountById(discountId).orElseThrow(() -> new DiscountNotFoundException("discount with given Id could not be found")));
     }
 
     @PostMapping()
     @ResponseStatus(code = HttpStatus.CREATED)
     public void postDiscount(@Valid @RequestBody Discount discount) throws InvalidIdPlacementException {
-        if (discount.getId() != 0){
+        if (discount.getId() != 0) {
             throw new InvalidIdPlacementException("The Id shall not be passed in a Post Request");
         }
         discountService.addDiscount(discount);
@@ -49,7 +49,7 @@ public class DiscountController {
     @PutMapping("/{discountId}")
     @ResponseStatus(code = HttpStatus.OK)
     public void updateDiscount(@Valid @PathVariable("discountId") Integer discountId, @RequestBody Discount discount) throws InvalidIdPlacementException {
-        if (discount.getId() == 0){
+        if (discount.getId() == 0) {
             throw new InvalidIdPlacementException("The Id has to be Passed to the Request");
         }
         discountService.updateDiscount(discountId, discount);
@@ -62,17 +62,17 @@ public class DiscountController {
     }
 
     @ExceptionHandler(DiscountNotFoundException.class)
-    public ResponseEntity<String> handleNoSuchElementException(DiscountNotFoundException nfe){
+    public ResponseEntity<String> handleNoSuchElementException(DiscountNotFoundException nfe) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(nfe.getMessage());
     }
 
     @ExceptionHandler(InvalidIdPlacementException.class)
-    public ResponseEntity<String> handleNoSuchElementException(InvalidIdPlacementException iipe){
+    public ResponseEntity<String> handleNoSuchElementException(InvalidIdPlacementException iipe) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(iipe.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<String> handleMethodArgumentNotValidException(MethodArgumentNotValidException manve){
+    public ResponseEntity<String> handleMethodArgumentNotValidException(MethodArgumentNotValidException manve) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Objects.requireNonNull(manve.getFieldError()).getDefaultMessage());
     }
 }

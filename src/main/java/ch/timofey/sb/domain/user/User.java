@@ -21,10 +21,18 @@ public class User {
     @Column(name = "username")
     private String username;
 
-    @ManyToMany()
+    @Column(name = "password")
+    private String password;
+
+    @ManyToMany(fetch =FetchType.EAGER)
     @JoinTable(
             name = "user_role",
             joinColumns = @JoinColumn(name = "id_user", referencedColumnName = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "id_role", referencedColumnName = "role_id"))
     private Set<Role> ruleSet;
+
+    public User(User user) {
+        this.id = user.getId();
+        this.username = user.getUsername();
+    }
 }
