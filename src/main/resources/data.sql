@@ -1,2 +1,10 @@
-INSERT INTO discount (code, id_book, discount_in_percent) VALUES (5, 21, 10);
-INSERT INTO discount (code, id_book, discount_in_percent) VALUES (6, 12, 69);
+INSERT INTO discount (code, id_customer, discount_in_percent) VALUES (5, 21, 10);
+INSERT INTO discount (code, id_customer, discount_in_percent) VALUES (6, 12, 69);
+INSERT INTO users (username) VALUES ('Dankmstr');
+INSERT INTO users (username) VALUES ('PenguinKiller69');
+INSERT INTO users (username) VALUES ('TrackMate');
+INSERT INTO role (role_name) VALUES ('ADMIN');
+INSERT INTO role (role_name) VALUES ('USER');
+INSERT INTO authority (authority_name) VALUES ('READ');
+INSERT INTO authority (authority_name) VALUES ('DELETE');
+INSERT INTO authority (authority_name) VALUES ('CREATE');
