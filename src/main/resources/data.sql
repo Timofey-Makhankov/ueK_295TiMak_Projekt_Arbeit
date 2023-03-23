@@ -21,4 +21,4 @@ INSERT INTO role_authority VALUES (1, 1);
 INSERT INTO role_authority VALUES (1, 2);
 INSERT INTO role_authority VALUES (1, 3);
 INSERT INTO role_authority VALUES (1, 4);
-INSERT INTO role_authority VALUES (2, 1);
+INSERT INTO role_authority VALUES (2, 2);
