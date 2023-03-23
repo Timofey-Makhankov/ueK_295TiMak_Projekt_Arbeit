@@ -3,14 +3,9 @@ package ch.timofey.sb.domain.discount;
 import ch.timofey.sb.exception.DiscountNotFoundException;
 import ch.timofey.sb.exception.InvalidIdPlacementException;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -45,14 +40,22 @@ public class DiscountService {
             if (discount.getId() == 0) {
                 throw new InvalidIdPlacementException("The Id has to be Passed to the Request");
             }
-            discount.setId(index);
+            if (discountRepository.findById(index).isPresent()) {
+                discount.setId(index);
+            } else {
+                throw new DiscountNotFoundException("The given id Discount was not found in the Database");
+            }
             discountRepository.save(discount);
             log.info("Discount has been updated");
         }
     }
 
     public void deleteDiscount(int index) {
-        discountRepository.deleteById(index);
+        if (discountRepository.findById(index).isPresent()) {
+            discountRepository.deleteById(index);
+        } else {
+            throw new DiscountNotFoundException("The given id discount was not found in the Database");
+        }
         log.info("discount has been in DB deleted");
     }
 }

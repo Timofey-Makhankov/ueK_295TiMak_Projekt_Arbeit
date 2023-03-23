@@ -59,16 +59,16 @@ public class DiscountController {
 
     @DeleteMapping("/{discountId}")
     @PreAuthorize("hasAuthority('DELETE')")
-    @Operation(summary = "Deletes a given discount in the database with a given Id", description = "This Request Method will delete a discoutn in the Database, if it is in the database. Otherwise it will return the code 401. To access the API, you need to have the Role <ADMIN>")
+    @Operation(summary = "Deletes a given discount in the database with a given Id", description = "This Request Method will delete a discount in the Database, if it is in the database. Otherwise it will return the code 401. To access the API, you need to have the Role <ADMIN>")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void deleteDiscount(@Valid @PathVariable("discountId") Integer discountId) {
         discountService.deleteDiscount(discountId);
     }
 
     @ExceptionHandler(DiscountNotFoundException.class)
-    public ResponseEntity<String> handleNoSuchElementException(DiscountNotFoundException nfe) {
+    public ResponseEntity<String> handleNoSuchElementException(DiscountNotFoundException dnfe) {
         log.error("The given Discount was not found in the database");
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(nfe.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(dnfe.getMessage());
     }
 
     @ExceptionHandler(InvalidIdPlacementException.class)
