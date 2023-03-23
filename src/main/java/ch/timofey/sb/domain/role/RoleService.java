@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 @Service
 @Log4j2
 public class RoleService {
-    private RoleRepository roleRepository;
+    private final RoleRepository roleRepository;
 
-    public RoleService(RoleRepository roleRepository){
+    public RoleService(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
     }
 }

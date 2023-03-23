@@ -35,4 +35,4 @@ Im Intellij sollte man nur auf den Grünen lauf zeichen anclicken, wenn das der 
 
 Die Documentation zu Endpoints kann man nach der Laufung vom Programm mit diesem Link ansehen:
 
-http://localhost:8080/swagger-ui/ oder [hier](http://localhost:8080/swagger-ui/) anklicken
+http://localhost:8080/swagger-ui/index.html oder [hier](http://localhost:8080/swagger-ui/index.html) anklicken

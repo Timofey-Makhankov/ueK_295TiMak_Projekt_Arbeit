@@ -1,8 +1,6 @@
 package ch.timofey.sb.domain.user;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,11 +15,12 @@ import java.util.Collection;
 public class UserService implements UserDetailsService {
     UserRepository repository;
 
-    public UserService(UserRepository userRepository){
+    public UserService(UserRepository userRepository) {
         repository = userRepository;
     }
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        log.info("A user has tried to log in to the service");
         return repository.findUserByUsername(username).map(UserDetailsImpl::new).orElseThrow(() -> new UsernameNotFoundException(username));
     }
 

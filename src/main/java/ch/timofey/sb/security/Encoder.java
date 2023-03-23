@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class Encoder {
     @Bean
+        // NoOpPasswordEncoder is deprecated, but is at the moment fine
     PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
