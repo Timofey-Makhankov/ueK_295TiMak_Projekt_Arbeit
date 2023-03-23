@@ -37,7 +37,7 @@ public class DiscountService {
 
     public void updateDiscount(Integer index, Discount discount) throws InvalidIdPlacementException {
         if (index != null) {
-            if (discount.getId() == 0) {
+            if (discount.getId() > 0) {
                 throw new InvalidIdPlacementException("The Id has to be Passed to the Request");
             }
             if (discountRepository.findById(index).isPresent()) {
