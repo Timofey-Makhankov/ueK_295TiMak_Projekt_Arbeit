@@ -1,7 +1,5 @@
 # Documentation
 
-[TOC]
-
 ## Description
 
 Dieses Projekt geht es darum, ein RESTAPI Applikation zu erstellen. Es wurde mit Springboot erstellt und als das Projektarbeit für üK 295: Backend Dev.
