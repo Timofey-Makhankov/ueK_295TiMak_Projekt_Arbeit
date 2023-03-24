@@ -41,6 +41,7 @@ Man kann es auch mit Docker Desktop GUI nachschauen
 Im Intellij sollte man nur auf den Grünen lauf zeichen anclicken, wenn das der Fall nicht ist kann man vom Gradle Tab, unter applikationen und `bootRun` klicken.
 
 ![Image 1](Images/Screenshot 2023-03-23 152849.png)
+
 ![Image 2](Images/Screenshot 2023-03-23 152926.png)
 
 Die Documentation zu Endpoints kann man nach starten vom Programm mit diesem Link ansehen:
